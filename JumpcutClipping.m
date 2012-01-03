@@ -37,7 +37,7 @@
     return self;
 }
 
--(id) initWithContents:(NSString *)contents withType:(NSString *)type withDisplayLength:(int)displayLength
+-(id) initWithContents:(NSString *)contents withType:(NSString *)type withDisplayLength:(int)displayLength withCreatedtime:(NSString *)date
 {
     [super init];
     clipContents = [[[NSString alloc] init] retain];
