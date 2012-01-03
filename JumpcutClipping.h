@@ -34,15 +34,13 @@
     NSString * clipType;
 // The display length
     int clipDisplayLength;
-// The created time
-    NSString * clipCreatedtime;
 // The display string
     NSString * clipDisplayString;
 // Does it have a name?
     BOOL clipHasName;
 }
 
--(id) initWithContents:(NSString *)contents withType:(NSString *)type withDisplayLength:(int)displayLength withCreatedtime:(NSString *)date;
+-(id) initWithContents:(NSString *)contents withType:(NSString *)type withDisplayLength:(int)displayLength;
 /* -(id) initWithCoder:(NSCoder *)coder;
 -(void) decodeWithCoder:(NSCoder *)coder; */
 -(NSString *) description;

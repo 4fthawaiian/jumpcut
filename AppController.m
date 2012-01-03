@@ -163,11 +163,6 @@ typedef unsigned NSWindowCollectionBehavior;
 												  selector:@selector(pollPB:)
 												  userInfo:nil
 												   repeats:YES] retain];
-    pollPBExpiry = [[NSTimer scheduledTimerWithTimeInterval:(300.0)
-                                                     target:self
-                                                   selector:@selector(pollPBExpire:)
-                                                   userInfo:nil
-                                                    repeats:YES] retain];
 	
     // Finish up
 	srTransformer = [[[SRKeyCodeTransformer alloc] init] retain];
@@ -315,14 +310,6 @@ typedef unsigned NSWindowCollectionBehavior;
 	CGPostKeyboardEvent( (CGCharCode)'v', veeCode, false ); //  V up 
 	CGPostKeyboardEvent( (CGCharCode)0, (CGKeyCode)55, false ); // Command up
 } 
-
--(void)pollPBExpiry:(NSTimer *)timer
-{
-// placeholder function to run the expiry timer
-// *get the current time
-// *get the array of entries (which should include the time they were saved)
-// *loop through the array and drop anything out of date (more than 1800 seconds old)
-}
 
 -(void)pollPB:(NSTimer *)timer
 {
@@ -529,13 +516,13 @@ typedef unsigned NSWindowCollectionBehavior;
     int choice;
     
     [NSApp activateIgnoringOtherApps:YES];
-    choice = NSRunAlertPanel(@"Delete Newest Clipping",
-                             @"Do you want to delete the most recently added clipping?",
-                             @"Delete", @"Cancel", nil);
+    choice = NSRunAlertPanel(NSLocalizedString(@"Delete Newest Clipping", @"Alert panel - delete newest clipping - title"),
+                             NSLocalizedString(@"Do you want to delete the most recently added clipping?", @"Alert panel - delete newest clipping - message"),
+                             NSLocalizedString(@"Delete", @"Alert panel - delete newest clipping - message"), NSLocalizedString(@"Cancel", @"Alert panel - cancel"), nil);
     
     // on clear, zap the list and redraw the menu
     if ( choice == NSAlertDefaultReturn ) {
-        [clippingStore clearNewestItem];
+        [clippingStore clearLatestItem];
         [self updateMenu];
         if ( [[NSUserDefaults standardUserDefaults] integerForKey:@"savePreference"] >= 1 ) {
             [self saveEngine];

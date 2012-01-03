@@ -38,8 +38,6 @@
     // A timer which will let us check the pasteboard;
     // this should default to every .5 seconds but be user-configurable
     NSTimer *pollPBTimer;
-    // Another timer to expire saved entries - BEM
-    NSTimer *pollPBExpiry;
     // We want an interface to the pasteboard
     NSPasteboard *jcPasteboard;
     // Track the clipboard count so we only act when its contents change
@@ -54,7 +52,6 @@
 
 // Basic functionality
 -(void) pollPB:(NSTimer *)timer;
--(void) pollPBExpiry: (NSTimer *)timer;
 -(BOOL) addClipToPasteboardFromCount:(int)indexInt;
 -(void) setPBBlockCount:(NSNumber *)newPBBlockCount;
 -(void) hideApp;

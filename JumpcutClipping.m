@@ -32,12 +32,11 @@
 {
     [self initWithContents:@""
           withType:@""
-          withDisplayLength:40
-          withCreatedtime:NULL];
+          withDisplayLength:40];
     return self;
 }
 
--(id) initWithContents:(NSString *)contents withType:(NSString *)type withDisplayLength:(int)displayLength withCreatedtime:(NSString *)date
+-(id) initWithContents:(NSString *)contents withType:(NSString *)type withDisplayLength:(int)displayLength
 {
     [super init];
     clipContents = [[[NSString alloc] init] retain];
