@@ -34,6 +34,8 @@
     NSString * clipType;
 // The display length
     int clipDisplayLength;
+// The created time
+    NSString * clipCreatedtime;
 // The display string
     NSString * clipDisplayString;
 // Does it have a name?

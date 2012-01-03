@@ -32,7 +32,8 @@
 {
     [self initWithContents:@""
           withType:@""
-          withDisplayLength:40];
+          withDisplayLength:40
+          withCreatedtime:NULL];
     return self;
 }
 

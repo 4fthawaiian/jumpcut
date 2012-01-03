@@ -163,6 +163,11 @@ typedef unsigned NSWindowCollectionBehavior;
 												  selector:@selector(pollPB:)
 												  userInfo:nil
 												   repeats:YES] retain];
+    pollPBExpiry = [[NSTimer scheduledTimerWithTimeInterval:(300.0)
+                                                     target:self
+                                                   selector:@selector(pollPBExpire:)
+                                                   userInfo:nil
+                                                    repeats:YES] retain];
 	
     // Finish up
 	srTransformer = [[[SRKeyCodeTransformer alloc] init] retain];
@@ -310,6 +315,14 @@ typedef unsigned NSWindowCollectionBehavior;
 	CGPostKeyboardEvent( (CGCharCode)'v', veeCode, false ); //  V up 
 	CGPostKeyboardEvent( (CGCharCode)0, (CGKeyCode)55, false ); // Command up
 } 
+
+-(void)pollPBExpiry:(NSTimer *)timer
+{
+// placeholder function to run the expiry timer
+// *get the current time
+// *get the array of entries (which should include the time they were saved)
+// *loop through the array and drop anything out of date (more than 1800 seconds old)
+}
 
 -(void)pollPB:(NSTimer *)timer
 {

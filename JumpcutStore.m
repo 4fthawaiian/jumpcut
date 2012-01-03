@@ -48,6 +48,19 @@
     return self;
 }
 
+-(void) getDateString:(NSString *)string {
+NSDateFormatter *formatter;
+NSString        *dateString;
+
+formatter = [[NSDateFormatter alloc] init];
+[formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+
+dateString = [formatter stringFromDate:[NSDate date]];
+
+[formatter release];  // maybe; you might want to keep the formatter 
+                      // if you're doing this a lot.
+}
+
 // Add a clipping
 -(void) addClipping:(NSString *)clipping ofType:(NSString *)type{
     // Clipping object
@@ -55,7 +68,8 @@
 	// Create clipping
     newClipping = [[JumpcutClipping alloc] initWithContents:clipping
 												   withType:type
-										  withDisplayLength:[self displayLen]];
+										  withDisplayLength:[self displayLen]
+										  withCreatedTime:[self displayLen]];
 	// Push it onto our recent clippings stack
 	[jcList insertObject:newClipping atIndex:0];
 	// Delete clippings older than jcRememberNum
